@@ -1,5 +1,6 @@
 <div class="card-body">
-    <table class="table table-bordered table-striped" id="table_id">
+
+    <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -9,18 +10,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let transaction of transactions" (click)='onClick()'>
-
-                <td>{{ transaction.transactionId }}</td>
+            <tr *ngFor="let transaction of transactions">
+                <td><button (click)="onClick2(transaction.transactionId)" type="button">{{ transaction.transactionId }}</button></td>
                 <td>{{ transaction.transactionDate | date: 'MM/dd/yyy' }}</td>
                 <td>{{ transaction.type }}</td>
                 <td>${{ transaction.amount }}</td>
-                <br>
-                <td>
-                    <app-transaction-details *ngIf="toggle===false"></app-transaction-details>
-                </td>
-
+                <div>
+                    <app-transaction-details *ngIf="toggle === false"></app-transaction-details>
+                </div>
             </tr>
-
+        </tbody>
     </table>
 </div>

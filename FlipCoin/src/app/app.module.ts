@@ -39,6 +39,11 @@ import { MakeTransactionComponent } from './make-transaction/make-transaction.co
 import { WithdrawFormComponent } from './withdraw-form/withdraw-form.component';
 import { TransferFormComponent } from './transfer-form/transfer-form.component';
 import { TransferOtherComponent } from './transfer-other/transfer-other.component';
+<<<<<<< HEAD
+=======
+import { ContactFormComponent } from './contact-form/contact-form.component';
+import { TransactionService } from './services/transaction-service.service';
+>>>>>>> dev
 
  
 @NgModule({
@@ -77,7 +82,12 @@ import { TransferOtherComponent } from './transfer-other/transfer-other.componen
     MakeTransactionComponent,
     WithdrawFormComponent,
     TransferFormComponent,
+<<<<<<< HEAD
     TransferOtherComponent
+=======
+    TransferOtherComponent,
+    ContactFormComponent
+>>>>>>> dev
   ],
   imports: [
     BrowserModule,
@@ -90,7 +100,7 @@ import { TransferOtherComponent } from './transfer-other/transfer-other.componen
   ],
   providers: [AccountService,
     { provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi:true },
-     UserProfileComponent,
+     UserProfileComponent, TransactionService
   
   ],
 
