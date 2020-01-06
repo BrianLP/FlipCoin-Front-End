@@ -28,21 +28,14 @@ import { Transactions } from './transactions/transactions.component';
 import { TransactionListComponent } from './transaction-list/transaction-list.component';
 import { NotesComponent } from './postLogComponents/notes/notes.component';
 import { TransactionListByAccountComponent } from './transaction-list-by-account/transaction-list-by-account.component';
-
 import { TransactionListTopByUserComponent } from './transaction-list-top-by-user/transaction-list-top-by-user.component';
 import { TransactionDetailsComponent } from './transaction-details/transaction-details.component';
-
 import { UserProfileComponent } from './postLogComponents/user-profile/user-profile.component';
 import { UserProfileFormComponent } from './postLogComponents/user-profile-form/user-profile-form.component';
 import { DepositFormComponent } from './deposit-form/deposit-form.component';
 import { MakeTransactionComponent } from './make-transaction/make-transaction.component';
 import { WithdrawFormComponent } from './withdraw-form/withdraw-form.component';
 import { TransferFormComponent } from './transfer-form/transfer-form.component';
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -78,13 +71,7 @@ import { TransferFormComponent } from './transfer-form/transfer-form.component';
     MakeTransactionComponent,
     WithdrawFormComponent,
     TransferFormComponent
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> dev
-  ],
+],
   imports: [
     BrowserModule,
     AppRoutingModule,
