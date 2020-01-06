@@ -36,6 +36,8 @@ import { DepositFormComponent } from './deposit-form/deposit-form.component';
 import { MakeTransactionComponent } from './make-transaction/make-transaction.component';
 import { WithdrawFormComponent } from './withdraw-form/withdraw-form.component';
 import { TransferFormComponent } from './transfer-form/transfer-form.component';
+import { TransferOtherComponent } from './transfer-other/transfer-other.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -61,17 +63,22 @@ import { TransferFormComponent } from './transfer-form/transfer-form.component';
     TransactionListComponent,
     NotesComponent,
     TransactionListByAccountComponent,
-
+    DepositFormComponent,
+    MakeTransactionComponent,
+    WithdrawFormComponent,
+    TransferFormComponent,
     TransactionListTopByUserComponent,
     TransactionDetailsComponent,
-
     UserProfileComponent,
     UserProfileFormComponent,
     DepositFormComponent,
     MakeTransactionComponent,
     WithdrawFormComponent,
-    TransferFormComponent
-],
+    TransferFormComponent,
+    TransferOtherComponent,
+    ContactFormComponent
+  ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
