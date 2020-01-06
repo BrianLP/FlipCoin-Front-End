@@ -3,7 +3,8 @@ import { BillComponent } from '../bill/bill.component'
 import { BillService } from '../services/bill-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BillDetailsComponent } from '../bill-details/bill-details.component';
-
+import { UserService} from '../services/user.service';
+import { AuthenticationService, User } from '../services/authentication.service'
 
 
 @Component({
@@ -16,14 +17,18 @@ export class BillListComponent implements OnInit {
   bills: BillComponent[];
   bill: BillComponent;
   selectedBill: BillComponent;
-  storedId:number
+  storedId:number;
+  user:User;
+  currentDate:Date = new Date
+ 
 
   constructor(
     private billService: BillService,
     private route: ActivatedRoute,
-    private router: Router
-    
-  ) { }
+    private router: Router,
+    private userService: UserService,
+    private authenticate: AuthenticationService,
+    ) { }
 
   ngOnInit() {
 
@@ -31,6 +36,9 @@ export class BillListComponent implements OnInit {
     this.bills = data;
     this.billTotal();
     });
+    this.userService.getUser(this.authenticate.getUser()).subscribe(e => this.user = e);
+    
+    
   }
   gotoBillsList() {
     this.router.navigate(['bills']);
@@ -51,4 +59,16 @@ export class BillListComponent implements OnInit {
   this.router.navigateByUrl('billDetails');
   console.log(id);
   }
+
+  lateCheck(date:string):boolean{
+     if (this.currentDate > new Date(date)) {
+      console.log(new Date(date));
+      console.log(new Date());
+      return true;
+    }else{
+     
+      return false;
+    }
+  }
+
 }

@@ -11,6 +11,7 @@ export class AccountService {
 
   
   private accountsUrl: string;
+  private storedId: number;
  
   constructor(private http: HttpClient) {
     this.accountsUrl = 'http://localhost:8080/API';
@@ -47,6 +48,13 @@ export class AccountService {
   }
   public transferRecipient(transaction:Transactions){
     return this.http.put<Account>(this.accountsUrl+'/accounts/transferRecipient/',transaction);
+  }
+
+  public getStoredId():number{
+    return this.storedId;
+  }
+  public setStoredId(id:number){
+    this.storedId=id;
   }
   
 }

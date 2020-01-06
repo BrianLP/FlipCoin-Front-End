@@ -38,6 +38,7 @@ import { DepositFormComponent } from './deposit-form/deposit-form.component';
 import { MakeTransactionComponent } from './make-transaction/make-transaction.component';
 import { WithdrawFormComponent } from './withdraw-form/withdraw-form.component';
 import { TransferFormComponent } from './transfer-form/transfer-form.component';
+import { TransferOtherComponent } from './transfer-other/transfer-other.component';
 
  
 @NgModule({
@@ -75,7 +76,8 @@ import { TransferFormComponent } from './transfer-form/transfer-form.component';
     DepositFormComponent,
     MakeTransactionComponent,
     WithdrawFormComponent,
-    TransferFormComponent
+    TransferFormComponent,
+    TransferOtherComponent
   ],
   imports: [
     BrowserModule,

@@ -44,6 +44,10 @@ export class AccountListComponent implements OnInit {
   onSelect(account: Account): void {
     this.selectedAccount = account;
   }
+  storeId(id:number){
+    this.accountService.setStoredId(id);
+    this.router.navigateByUrl('accountsOverview')
+  }
   
   
 

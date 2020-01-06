@@ -14,7 +14,7 @@ import { Account } from 'app/account/account.component';
 })
 
 export class TransactionListByAccountComponent implements OnInit {
-
+  toggle:boolean = true;
   @Input() account: Account;
   transactions: Transactions[];
   selectedTransaction: Transactions;
@@ -33,5 +33,11 @@ export class TransactionListByAccountComponent implements OnInit {
   onSelect(transaction: Transactions): void {
     this.selectedTransaction = transaction;
   }
-
+  onClick(){
+    if (this.toggle === true){
+      this.toggle = false;
+    }else{
+      this.toggle = true;
+    }
+  }
 }
