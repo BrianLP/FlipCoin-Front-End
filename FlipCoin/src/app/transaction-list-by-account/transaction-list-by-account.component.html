@@ -1,5 +1,4 @@
 <div class="card-body">
-
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
@@ -15,9 +14,7 @@
                 <td>{{ transaction.transactionDate | date: 'MM/dd/yyy' }}</td>
                 <td>{{ transaction.type }}</td>
                 <td>${{ transaction.amount }}</td>
-                <div>
-                    <app-transaction-details *ngIf="toggle === false"></app-transaction-details>
-                </div>
+
             </tr>
         </tbody>
     </table>
