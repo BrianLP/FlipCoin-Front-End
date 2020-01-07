@@ -62,8 +62,7 @@ export class BillListComponent implements OnInit {
 
   lateCheck(date:string):boolean{
      if (this.currentDate > new Date(date)) {
-      console.log(new Date(date));
-      console.log(new Date());
+     
       return true;
     }else{
      
