@@ -16,7 +16,7 @@
     background: linear-gradient(90deg, rgba(29, 196, 0, 1) 0%, rgba(152, 255, 166, 1) 0%, rgba(193, 255, 183, 1) 36%, rgba(139, 255, 156, 1) 79%, rgba(61, 255, 118, 1) 100%);
     display: inline-block;
     border-bottom-left-radius: 28px;
-    border-bottom-right-radius: 25px;
+    border-bottom-right-radius: 28px;
 }
 
 hr {
@@ -31,6 +31,10 @@ hr {
 
 .icon-big i {
     line-height: 59px;
+}
+
+#footText {
+    color: rgb(29, 196, 0);
 }
 
 .card {

@@ -1,16 +1,18 @@
-#footer-color{
+#footer-color {
     color: black;
 }
-a{
+
+a {
     color: black;
     text-decoration-line: none;
 }
 
-a:hover{
+a:hover {
     color: #18d26e;
 }
-footer{
-    background-color: lightgrey;
+
+footer {
+    background-color: lightgray;
     display: block;
-    
+    height: 6pc;
 }

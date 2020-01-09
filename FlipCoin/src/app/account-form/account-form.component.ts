@@ -23,6 +23,7 @@ export class AccountFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.account.userId = sessionStorage.getItem('userId');
     this.accountService.save(this.account).subscribe(data => this.gotoAccountsList());
 
   }
