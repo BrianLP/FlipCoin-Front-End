@@ -1,0 +1,21 @@
+<div class="card-body">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Description</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions">
+                <td><button (click)="onClick2(transaction.transactionId)" type="button">{{ transaction.transactionId }}</button></td>
+                <td>{{ transaction.transactionDate | date: 'MM/dd/yyy' }}</td>
+                <td>{{ transaction.type }}</td>
+                <td>${{ transaction.amount }}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
