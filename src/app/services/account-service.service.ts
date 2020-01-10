@@ -20,7 +20,8 @@ export class AccountService {
 
   constructor(private http: HttpClient,
     private userService: UserService) {
-    this.accountsUrl = 'https://zipbank-delightful-parrot-qa.cfapps.io/API';
+    //this.accountsUrl = 'https://zipbank-delightful-parrot-qa.cfapps.io/API';
+    this.accountsUrl = 'https://flipcoinzcw.herokuapp.com/API';
 
   }
   public findAll(): Observable<Account[]> {

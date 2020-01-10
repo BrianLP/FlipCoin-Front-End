@@ -16,11 +16,11 @@ export class JwtResponse {
 export class AuthenticationService {
 
   
-
+//https://zipbank-delightful-parrot-qa.cfapps.io/authenticate
   constructor(private http: HttpClient) { }
 
   authenticate(username, password) {
-    return this.http.post<any>('https://zipbank-delightful-parrot-qa.cfapps.io/authenticate', { username, password }).pipe(map(
+    return this.http.post<any>('https://flipcoinzcw.herokuapp.com/authenticate', { username, password }).pipe(map(
       userData => {
         sessionStorage.setItem('username', username);
         let tokenStr = 'Bearer ' + userData.jwt;

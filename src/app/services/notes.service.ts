@@ -14,7 +14,8 @@ export class NotesService {
 
   user: any = new User();
 
-  private url: string =  "https://zipbank.herokuapp.com/user";
+  //private url: string =  "https://zipbank.herokuapp.com/user";
+  private url: string = 'https://flipcoinzcw.herokuapp.com/user';
 
   constructor(
     private http:HttpClient, 
