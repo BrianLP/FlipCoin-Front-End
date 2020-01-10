@@ -12,7 +12,7 @@ export class UserService {
   currentUser:User;
 
   //private url: string = "https://zipbank-delightful-parrot-qa.cfapps.io/";
-  private url : string = 'https://flipcoinzcw.herokuapp.com/';
+  private url : string = 'https://zipbank.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
 

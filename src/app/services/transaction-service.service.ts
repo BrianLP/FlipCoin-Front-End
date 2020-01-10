@@ -13,8 +13,7 @@ export class TransactionService {
     storedId: number;
 
     constructor(private http: HttpClient) {
-        //this.transactionsUrl = 'https://zipbank.herokuapp.com/API';
-        this.transactionsUrl = 'https://flipcoinzcw.herokuapp.com/API';
+        this.transactionsUrl = 'https://zipbank.herokuapp.com/API';
     }
 
     public getTransactions(accountId: number): Observable<Transactions[]> {

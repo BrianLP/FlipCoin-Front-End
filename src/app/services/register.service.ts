@@ -8,7 +8,7 @@ import { Register } from '../models/register';
 export class RegisterService {
 
   //url: string = "https://zipbank-delightful-parrot-qa.cfapps.io";
-  url: string = 'https://flipcoinzcw.herokuapp.com';
+  url: string = 'https://zipbank.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 

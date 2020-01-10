@@ -15,7 +15,7 @@ export class BillService {
 
   constructor(private http: HttpClient) {
     //this.accountsUrl = 'https://zipbank.herokuapp.com/API';
-    this.accountsUrl = 'https://flipcoinzcw.herokuapp.com/API';
+    this.accountsUrl = 'https://zipbank.herokuapp.com/API';
   }
 
   public findAll(): Observable<BillComponent[]> {
