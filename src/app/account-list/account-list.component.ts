@@ -28,6 +28,7 @@ export class AccountListComponent implements OnInit {
     
     //this.getUserAccounts();
     this.accountService.findAll().subscribe(data => {this.accounts = data;
+      console.log(this.accounts);
     });
   }
   getUserAccounts()  {
