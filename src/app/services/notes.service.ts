@@ -14,7 +14,7 @@ export class NotesService {
 
   user: any = new User();
 
-  private url: string =  "https://zipbank.herokuapp.com/user";
+  private url: string =  "https://zipbank-delightful-parrot-qa.cfapps.io/API";
 
   constructor(
     private http:HttpClient, 
