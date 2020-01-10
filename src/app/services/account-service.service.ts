@@ -15,6 +15,7 @@ export class AccountService {
  
   constructor(private http: HttpClient) {
     this.accountsUrl = 'https://zipbank.herokuapp.com/API';
+
   }
  
   public findAll(): Observable<Account[]> {
