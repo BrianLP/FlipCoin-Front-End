@@ -2780,7 +2780,7 @@ let NotesService = class NotesService {
         this.http = http;
         this.authenticate = authenticate;
         this.user = new app_models_user__WEBPACK_IMPORTED_MODULE_4__["User"]();
-        this.url = "https://zipbank-delightful-parrot-qa.cfapps.io/API";
+        this.url = "https://zipbank-delightful-parrot-qa.cfapps.io/user";
     }
     getNotes() {
         return this.http.get(this.url + "/" + sessionStorage.getItem("userId") + "/notes");

@@ -5205,7 +5205,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.http = http;
         this.authenticate = authenticate;
         this.user = new app_models_user__WEBPACK_IMPORTED_MODULE_4__["User"]();
-        this.url = "https://zipbank-delightful-parrot-qa.cfapps.io/API";
+        this.url = "https://zipbank-delightful-parrot-qa.cfapps.io/user";
       }
 
       _createClass(NotesService, [{

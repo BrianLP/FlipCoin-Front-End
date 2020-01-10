@@ -14,7 +14,7 @@ export class NotesService {
 
   user: any = new User();
 
-  private url: string =  "https://zipbank-delightful-parrot-qa.cfapps.io/API";
+  private url: string =  "https://zipbank-delightful-parrot-qa.cfapps.io/user";
 
   constructor(
     private http:HttpClient, 
