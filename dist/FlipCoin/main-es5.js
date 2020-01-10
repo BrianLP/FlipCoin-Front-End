@@ -1320,10 +1320,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function onSubmit() {
           var _this = this;
 
-          this.account.userId = sessionStorage.getItem('userId');
+          this.account.userId = parseInt(sessionStorage.getItem('userId')); //this.account.userId = sessionStorage.getItem('userId');
+
           this.accountService.save(this.account).subscribe(function (data) {
             return _this.gotoAccountsList();
           });
+          console.log(sessionStorage.getItem('userId'));
+          console.log(this.account);
         }
       }, {
         key: "gotoAccountsList",
@@ -1423,25 +1426,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var app_services_authentication_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! app/services/authentication.service */
+    "./src/app/services/authentication.service.ts");
 
     var AccountListComponent =
     /*#__PURE__*/
     function () {
-      function AccountListComponent(accountService, route, router) {
+      function AccountListComponent(accountService, route, router, authService) {
         _classCallCheck(this, AccountListComponent);
 
         this.accountService = accountService;
         this.route = route;
         this.router = router;
+        this.authService = authService;
         this.overview = 1;
       }
 
       _createClass(AccountListComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.getUserAccounts();
-          /*this.accountService.findAll().subscribe(data => {this.accounts = data;
-          });*/
+          this.getUserAccounts(); //this.accountService.findAll().subscribe(data => {this.accounts = data; 
+          //});
         }
       }, {
         key: "getUserAccounts",
@@ -1490,6 +1499,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+      }, {
+        type: app_services_authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"]
       }];
     };
 
@@ -2394,7 +2405,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "#modalButton {\n    margin-top: 15px;\n    margin-left: 0px;\n    margin-right: 4px;\n    background: rgb(29, 196, 0);\n    background: linear-gradient(90deg, rgba(29, 196, 0, 1) 0%, rgba(152, 255, 166, 1) 0%, rgba(193, 255, 183, 1) 36%, rgba(139, 255, 156, 1) 79%, rgba(61, 255, 118, 1) 100%);\n    color: black;\n    outline-color: darkgray;\n    box-shadow: darkgray;\n}\n\n#payButton {\n    margin-top: 15px;\n    margin-left: 4px;\n    margin-right: 4px;\n    background: rgb(29, 196, 0);\n    background: linear-gradient(90deg, rgba(29, 196, 0, 1) 0%, rgba(152, 255, 166, 1) 0%, rgba(193, 255, 183, 1) 36%, rgba(139, 255, 156, 1) 79%, rgba(61, 255, 118, 1) 100%);\n    color: black;\n}\n\n.child {}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYmlsbC1kZXRhaWxzL2JpbGwtZGV0YWlscy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZ0JBQWdCO0lBQ2hCLGdCQUFnQjtJQUNoQixpQkFBaUI7SUFDakIsMkJBQTJCO0lBQzNCLHlLQUF5SztJQUN6SyxZQUFZO0lBQ1osdUJBQXVCO0lBQ3ZCLG9CQUFvQjtBQUN4Qjs7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixnQkFBZ0I7SUFDaEIsaUJBQWlCO0lBQ2pCLDJCQUEyQjtJQUMzQix5S0FBeUs7SUFDekssWUFBWTtBQUNoQjs7QUFFQSxRQUFRIiwiZmlsZSI6InNyYy9hcHAvYmlsbC1kZXRhaWxzL2JpbGwtZGV0YWlscy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI21vZGFsQnV0dG9uIHtcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xuICAgIG1hcmdpbi1sZWZ0OiAwcHg7XG4gICAgbWFyZ2luLXJpZ2h0OiA0cHg7XG4gICAgYmFja2dyb3VuZDogcmdiKDI5LCAxOTYsIDApO1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg5MGRlZywgcmdiYSgyOSwgMTk2LCAwLCAxKSAwJSwgcmdiYSgxNTIsIDI1NSwgMTY2LCAxKSAwJSwgcmdiYSgxOTMsIDI1NSwgMTgzLCAxKSAzNiUsIHJnYmEoMTM5LCAyNTUsIDE1NiwgMSkgNzklLCByZ2JhKDYxLCAyNTUsIDExOCwgMSkgMTAwJSk7XG4gICAgY29sb3I6IGJsYWNrO1xuICAgIG91dGxpbmUtY29sb3I6IGRhcmtncmF5O1xuICAgIGJveC1zaGFkb3c6IGRhcmtncmF5O1xufVxuXG4jcGF5QnV0dG9uIHtcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xuICAgIG1hcmdpbi1sZWZ0OiA0cHg7XG4gICAgbWFyZ2luLXJpZ2h0OiA0cHg7XG4gICAgYmFja2dyb3VuZDogcmdiKDI5LCAxOTYsIDApO1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg5MGRlZywgcmdiYSgyOSwgMTk2LCAwLCAxKSAwJSwgcmdiYSgxNTIsIDI1NSwgMTY2LCAxKSAwJSwgcmdiYSgxOTMsIDI1NSwgMTgzLCAxKSAzNiUsIHJnYmEoMTM5LCAyNTUsIDE1NiwgMSkgNzklLCByZ2JhKDYxLCAyNTUsIDExOCwgMSkgMTAwJSk7XG4gICAgY29sb3I6IGJsYWNrO1xufVxuXG4uY2hpbGQge30iXX0= */";
+    __webpack_exports__["default"] = "#modalButton {\n    margin-top: 15px;\n    margin-left: 0px;\n    margin-right: 4px;\n    background: rgb(29, 196, 0);\n    background: linear-gradient(90deg, rgba(29, 196, 0, 1) 0%, rgba(152, 255, 166, 1) 0%, rgba(193, 255, 183, 1) 36%, rgba(139, 255, 156, 1) 79%, rgba(61, 255, 118, 1) 100%);\n    color: black;\n    outline-color: darkgray;\n    box-shadow: darkgray;\n}\n\n#payButton {\n    margin-top: 15px;\n    margin-left: 4px;\n    margin-right: 4px;\n    background: rgb(29, 196, 0);\n    background: linear-gradient(90deg, rgba(29, 196, 0, 1) 0%, rgba(152, 255, 166, 1) 0%, rgba(193, 255, 183, 1) 36%, rgba(139, 255, 156, 1) 79%, rgba(61, 255, 118, 1) 100%);\n    color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYmlsbC1kZXRhaWxzL2JpbGwtZGV0YWlscy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZ0JBQWdCO0lBQ2hCLGdCQUFnQjtJQUNoQixpQkFBaUI7SUFDakIsMkJBQTJCO0lBQzNCLHlLQUF5SztJQUN6SyxZQUFZO0lBQ1osdUJBQXVCO0lBQ3ZCLG9CQUFvQjtBQUN4Qjs7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixnQkFBZ0I7SUFDaEIsaUJBQWlCO0lBQ2pCLDJCQUEyQjtJQUMzQix5S0FBeUs7SUFDekssWUFBWTtBQUNoQiIsImZpbGUiOiJzcmMvYXBwL2JpbGwtZGV0YWlscy9iaWxsLWRldGFpbHMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIiNtb2RhbEJ1dHRvbiB7XG4gICAgbWFyZ2luLXRvcDogMTVweDtcbiAgICBtYXJnaW4tbGVmdDogMHB4O1xuICAgIG1hcmdpbi1yaWdodDogNHB4O1xuICAgIGJhY2tncm91bmQ6IHJnYigyOSwgMTk2LCAwKTtcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoOTBkZWcsIHJnYmEoMjksIDE5NiwgMCwgMSkgMCUsIHJnYmEoMTUyLCAyNTUsIDE2NiwgMSkgMCUsIHJnYmEoMTkzLCAyNTUsIDE4MywgMSkgMzYlLCByZ2JhKDEzOSwgMjU1LCAxNTYsIDEpIDc5JSwgcmdiYSg2MSwgMjU1LCAxMTgsIDEpIDEwMCUpO1xuICAgIGNvbG9yOiBibGFjaztcbiAgICBvdXRsaW5lLWNvbG9yOiBkYXJrZ3JheTtcbiAgICBib3gtc2hhZG93OiBkYXJrZ3JheTtcbn1cblxuI3BheUJ1dHRvbiB7XG4gICAgbWFyZ2luLXRvcDogMTVweDtcbiAgICBtYXJnaW4tbGVmdDogNHB4O1xuICAgIG1hcmdpbi1yaWdodDogNHB4O1xuICAgIGJhY2tncm91bmQ6IHJnYigyOSwgMTk2LCAwKTtcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoOTBkZWcsIHJnYmEoMjksIDE5NiwgMCwgMSkgMCUsIHJnYmEoMTUyLCAyNTUsIDE2NiwgMSkgMCUsIHJnYmEoMTkzLCAyNTUsIDE4MywgMSkgMzYlLCByZ2JhKDEzOSwgMjU1LCAxNTYsIDEpIDc5JSwgcmdiYSg2MSwgMjU1LCAxMTgsIDEpIDEwMCUpO1xuICAgIGNvbG9yOiBibGFjaztcbn0iXX0= */";
     /***/
   },
 
@@ -2735,8 +2746,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.billService.findAll().subscribe(function (data) {
             _this9.bills = data;
-
-            _this9.billTotal();
           });
           this.userService.getUser(this.authenticate.getUser()).subscribe(function (e) {
             return _this9.user = e;
@@ -4750,15 +4759,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @angular/common/http */
     "./node_modules/@angular/common/fesm2015/http.js");
+    /* harmony import */
+
+
+    var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./user.service */
+    "./src/app/services/user.service.ts");
 
     var AccountService =
     /*#__PURE__*/
     function () {
-      function AccountService(http) {
+      function AccountService(http, userService) {
         _classCallCheck(this, AccountService);
 
         this.http = http;
-        this.accountsUrl = 'http://zipbank.herokuapp.com/API';
+        this.userService = userService;
+        this.accountsUrl = 'https://zipbank-delightful-parrot-qa.cfapps.io/API';
       }
 
       _createClass(AccountService, [{
@@ -4773,8 +4789,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "save",
-        value: function save(accounts) {
-          return this.http.post(this.accountsUrl + '/accounts/dummy_created', accounts);
+        value: function save(account) {
+          return this.http.post(this.accountsUrl + '/accounts/dummy_created', account);
         }
       }, {
         key: "remove",
@@ -4825,6 +4841,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     AccountService.ctorParameters = function () {
       return [{
         type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+      }, {
+        type: _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]
       }];
     };
 
@@ -4914,7 +4932,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(AuthenticationService, [{
         key: "authenticate",
         value: function authenticate(username, password) {
-          return this.http.post('http://zipbank.herokuapp.com/authenticate', {
+          return this.http.post('https://zipbank-delightful-parrot-qa.cfapps.io/authenticate', {
             username: username,
             password: password
           }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (userData) {
@@ -5004,7 +5022,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, BillService);
 
         this.http = http;
-        this.accountsUrl = 'http://zipbank.herokuapp.com/API';
+        this.accountsUrl = 'https://zipbank-delightful-parrot-qa.cfapps.io/API';
       }
 
       _createClass(BillService, [{
@@ -5187,7 +5205,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.http = http;
         this.authenticate = authenticate;
         this.user = new app_models_user__WEBPACK_IMPORTED_MODULE_4__["User"]();
-        this.url = "http://zipbank.herokuapp.com/user";
+        this.url = "https://zipbank-delightful-parrot-qa.cfapps.io/API";
       }
 
       _createClass(NotesService, [{
@@ -5274,7 +5292,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, RegisterService);
 
         this.http = http;
-        this.url = "http://zipbank.herokuapp.com";
+        this.url = "https://zipbank-delightful-parrot-qa.cfapps.io";
       }
 
       _createClass(RegisterService, [{
@@ -5344,7 +5362,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, TransactionService);
 
         this.http = http;
-        this.transactionsUrl = 'http://zipbank.herokuapp.com/API';
+        this.transactionsUrl = 'https://zipbank-delightful-parrot-qa.cfapps.io/API';
       }
 
       _createClass(TransactionService, [{
@@ -5445,7 +5463,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, UserService);
 
         this.http = http;
-        this.url = "http://zipbank.herokuapp.com/";
+        this.url = "https://zipbank-delightful-parrot-qa.cfapps.io/";
       }
 
       _createClass(UserService, [{
@@ -5695,6 +5713,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _this25 = this;
 
           var id = +this.route.snapshot.paramMap.get('accountId');
+          console.log(id);
           this.transactionService.getTransactions(id).subscribe(function (data) {
             return _this25.transactions = data;
           });
@@ -6679,7 +6698,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /Users/brian/dev/FinalProj/FlipCoin-Front-End/FlipCoin/src/main.ts */
+    /*! /Users/brian/dev/FinalProj/FlipCoin-Front-End/src/main.ts */
     "./src/main.ts");
     /***/
   }

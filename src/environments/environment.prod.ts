@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: "https://zipbank.herokuapp.com"
+  url: "https://zipbank-delightful-parrot-qa.cfapps.io"
 };

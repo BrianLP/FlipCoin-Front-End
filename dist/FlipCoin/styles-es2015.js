@@ -338,7 +338,7 @@ if (content.locals) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/brian/dev/FinalProj/FlipCoin-Front-End/FlipCoin/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/brian/dev/FinalProj/FlipCoin-Front-End/src/styles.css */"./src/styles.css");
 
 
 /***/ })

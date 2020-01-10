@@ -709,8 +709,11 @@ let AccountFormComponent = class AccountFormComponent {
         this.account = new _account_account_component__WEBPACK_IMPORTED_MODULE_4__["Account"]();
     }
     onSubmit() {
-        this.account.userId = sessionStorage.getItem('userId');
+        this.account.userId = parseInt(sessionStorage.getItem('userId'));
+        //this.account.userId = sessionStorage.getItem('userId');
         this.accountService.save(this.account).subscribe(data => this.gotoAccountsList());
+        console.log(sessionStorage.getItem('userId'));
+        console.log(this.account);
     }
     gotoAccountsList() {
         this.router.navigateByUrl('accounts');
@@ -762,21 +765,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _services_account_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/account-service.service */ "./src/app/services/account-service.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var app_services_authentication_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! app/services/authentication.service */ "./src/app/services/authentication.service.ts");
+
 
 
 
 
 let AccountListComponent = class AccountListComponent {
-    constructor(accountService, route, router) {
+    constructor(accountService, route, router, authService) {
         this.accountService = accountService;
         this.route = route;
         this.router = router;
+        this.authService = authService;
         this.overview = 1;
     }
     ngOnInit() {
         this.getUserAccounts();
-        /*this.accountService.findAll().subscribe(data => {this.accounts = data;
-        });*/
+        //this.accountService.findAll().subscribe(data => {this.accounts = data; 
+        //});
     }
     getUserAccounts() {
         //const id = +this.route.snapshot.paramMap.get('userId');
@@ -801,7 +807,8 @@ let AccountListComponent = class AccountListComponent {
 AccountListComponent.ctorParameters = () => [
     { type: _services_account_service_service__WEBPACK_IMPORTED_MODULE_2__["AccountService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: app_services_authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"] }
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
@@ -1261,7 +1268,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#modalButton {\n    margin-top: 15px;\n    margin-left: 0px;\n    margin-right: 4px;\n    background: rgb(29, 196, 0);\n    background: linear-gradient(90deg, rgba(29, 196, 0, 1) 0%, rgba(152, 255, 166, 1) 0%, rgba(193, 255, 183, 1) 36%, rgba(139, 255, 156, 1) 79%, rgba(61, 255, 118, 1) 100%);\n    color: black;\n    outline-color: darkgray;\n    box-shadow: darkgray;\n}\n\n#payButton {\n    margin-top: 15px;\n    margin-left: 4px;\n    margin-right: 4px;\n    background: rgb(29, 196, 0);\n    background: linear-gradient(90deg, rgba(29, 196, 0, 1) 0%, rgba(152, 255, 166, 1) 0%, rgba(193, 255, 183, 1) 36%, rgba(139, 255, 156, 1) 79%, rgba(61, 255, 118, 1) 100%);\n    color: black;\n}\n\n.child {}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYmlsbC1kZXRhaWxzL2JpbGwtZGV0YWlscy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZ0JBQWdCO0lBQ2hCLGdCQUFnQjtJQUNoQixpQkFBaUI7SUFDakIsMkJBQTJCO0lBQzNCLHlLQUF5SztJQUN6SyxZQUFZO0lBQ1osdUJBQXVCO0lBQ3ZCLG9CQUFvQjtBQUN4Qjs7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixnQkFBZ0I7SUFDaEIsaUJBQWlCO0lBQ2pCLDJCQUEyQjtJQUMzQix5S0FBeUs7SUFDekssWUFBWTtBQUNoQjs7QUFFQSxRQUFRIiwiZmlsZSI6InNyYy9hcHAvYmlsbC1kZXRhaWxzL2JpbGwtZGV0YWlscy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI21vZGFsQnV0dG9uIHtcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xuICAgIG1hcmdpbi1sZWZ0OiAwcHg7XG4gICAgbWFyZ2luLXJpZ2h0OiA0cHg7XG4gICAgYmFja2dyb3VuZDogcmdiKDI5LCAxOTYsIDApO1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg5MGRlZywgcmdiYSgyOSwgMTk2LCAwLCAxKSAwJSwgcmdiYSgxNTIsIDI1NSwgMTY2LCAxKSAwJSwgcmdiYSgxOTMsIDI1NSwgMTgzLCAxKSAzNiUsIHJnYmEoMTM5LCAyNTUsIDE1NiwgMSkgNzklLCByZ2JhKDYxLCAyNTUsIDExOCwgMSkgMTAwJSk7XG4gICAgY29sb3I6IGJsYWNrO1xuICAgIG91dGxpbmUtY29sb3I6IGRhcmtncmF5O1xuICAgIGJveC1zaGFkb3c6IGRhcmtncmF5O1xufVxuXG4jcGF5QnV0dG9uIHtcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xuICAgIG1hcmdpbi1sZWZ0OiA0cHg7XG4gICAgbWFyZ2luLXJpZ2h0OiA0cHg7XG4gICAgYmFja2dyb3VuZDogcmdiKDI5LCAxOTYsIDApO1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg5MGRlZywgcmdiYSgyOSwgMTk2LCAwLCAxKSAwJSwgcmdiYSgxNTIsIDI1NSwgMTY2LCAxKSAwJSwgcmdiYSgxOTMsIDI1NSwgMTgzLCAxKSAzNiUsIHJnYmEoMTM5LCAyNTUsIDE1NiwgMSkgNzklLCByZ2JhKDYxLCAyNTUsIDExOCwgMSkgMTAwJSk7XG4gICAgY29sb3I6IGJsYWNrO1xufVxuXG4uY2hpbGQge30iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("#modalButton {\n    margin-top: 15px;\n    margin-left: 0px;\n    margin-right: 4px;\n    background: rgb(29, 196, 0);\n    background: linear-gradient(90deg, rgba(29, 196, 0, 1) 0%, rgba(152, 255, 166, 1) 0%, rgba(193, 255, 183, 1) 36%, rgba(139, 255, 156, 1) 79%, rgba(61, 255, 118, 1) 100%);\n    color: black;\n    outline-color: darkgray;\n    box-shadow: darkgray;\n}\n\n#payButton {\n    margin-top: 15px;\n    margin-left: 4px;\n    margin-right: 4px;\n    background: rgb(29, 196, 0);\n    background: linear-gradient(90deg, rgba(29, 196, 0, 1) 0%, rgba(152, 255, 166, 1) 0%, rgba(193, 255, 183, 1) 36%, rgba(139, 255, 156, 1) 79%, rgba(61, 255, 118, 1) 100%);\n    color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYmlsbC1kZXRhaWxzL2JpbGwtZGV0YWlscy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZ0JBQWdCO0lBQ2hCLGdCQUFnQjtJQUNoQixpQkFBaUI7SUFDakIsMkJBQTJCO0lBQzNCLHlLQUF5SztJQUN6SyxZQUFZO0lBQ1osdUJBQXVCO0lBQ3ZCLG9CQUFvQjtBQUN4Qjs7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixnQkFBZ0I7SUFDaEIsaUJBQWlCO0lBQ2pCLDJCQUEyQjtJQUMzQix5S0FBeUs7SUFDekssWUFBWTtBQUNoQiIsImZpbGUiOiJzcmMvYXBwL2JpbGwtZGV0YWlscy9iaWxsLWRldGFpbHMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIiNtb2RhbEJ1dHRvbiB7XG4gICAgbWFyZ2luLXRvcDogMTVweDtcbiAgICBtYXJnaW4tbGVmdDogMHB4O1xuICAgIG1hcmdpbi1yaWdodDogNHB4O1xuICAgIGJhY2tncm91bmQ6IHJnYigyOSwgMTk2LCAwKTtcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoOTBkZWcsIHJnYmEoMjksIDE5NiwgMCwgMSkgMCUsIHJnYmEoMTUyLCAyNTUsIDE2NiwgMSkgMCUsIHJnYmEoMTkzLCAyNTUsIDE4MywgMSkgMzYlLCByZ2JhKDEzOSwgMjU1LCAxNTYsIDEpIDc5JSwgcmdiYSg2MSwgMjU1LCAxMTgsIDEpIDEwMCUpO1xuICAgIGNvbG9yOiBibGFjaztcbiAgICBvdXRsaW5lLWNvbG9yOiBkYXJrZ3JheTtcbiAgICBib3gtc2hhZG93OiBkYXJrZ3JheTtcbn1cblxuI3BheUJ1dHRvbiB7XG4gICAgbWFyZ2luLXRvcDogMTVweDtcbiAgICBtYXJnaW4tbGVmdDogNHB4O1xuICAgIG1hcmdpbi1yaWdodDogNHB4O1xuICAgIGJhY2tncm91bmQ6IHJnYigyOSwgMTk2LCAwKTtcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoOTBkZWcsIHJnYmEoMjksIDE5NiwgMCwgMSkgMCUsIHJnYmEoMTUyLCAyNTUsIDE2NiwgMSkgMCUsIHJnYmEoMTkzLCAyNTUsIDE4MywgMSkgMzYlLCByZ2JhKDEzOSwgMjU1LCAxNTYsIDEpIDc5JSwgcmdiYSg2MSwgMjU1LCAxMTgsIDEpIDEwMCUpO1xuICAgIGNvbG9yOiBibGFjaztcbn0iXX0= */");
 
 /***/ }),
 
@@ -1440,7 +1447,6 @@ let BillListComponent = class BillListComponent {
     ngOnInit() {
         this.billService.findAll().subscribe(data => {
             this.bills = data;
-            this.billTotal();
         });
         this.userService.getUser(this.authenticate.getUser()).subscribe(e => this.user = e);
     }
@@ -2526,13 +2532,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user.service */ "./src/app/services/user.service.ts");
+
 
 
 
 let AccountService = class AccountService {
-    constructor(http) {
+    constructor(http, userService) {
         this.http = http;
-        this.accountsUrl = 'http://zipbank.herokuapp.com/API';
+        this.userService = userService;
+        this.accountsUrl = 'https://zipbank-delightful-parrot-qa.cfapps.io/API';
     }
     findAll() {
         return this.http.get(this.accountsUrl + '/accounts/all_accounts');
@@ -2540,8 +2549,8 @@ let AccountService = class AccountService {
     getAccountById(accountNumber) {
         return this.http.get(this.accountsUrl + '/accounts/' + accountNumber);
     }
-    save(accounts) {
-        return this.http.post(this.accountsUrl + '/accounts/dummy_created', accounts);
+    save(account) {
+        return this.http.post(this.accountsUrl + '/accounts/dummy_created', account);
     }
     remove(id) {
         return this.http.delete(this.accountsUrl + '/accounts/' + id);
@@ -2570,7 +2579,8 @@ let AccountService = class AccountService {
     }
 };
 AccountService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"] }
 ];
 AccountService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -2617,7 +2627,7 @@ let AuthenticationService = class AuthenticationService {
         this.http = http;
     }
     authenticate(username, password) {
-        return this.http.post('http://zipbank.herokuapp.com/authenticate', { username, password }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(userData => {
+        return this.http.post('https://zipbank-delightful-parrot-qa.cfapps.io/authenticate', { username, password }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(userData => {
             sessionStorage.setItem('username', username);
             let tokenStr = 'Bearer ' + userData.jwt;
             sessionStorage.setItem('token', tokenStr);
@@ -2669,7 +2679,7 @@ __webpack_require__.r(__webpack_exports__);
 let BillService = class BillService {
     constructor(http) {
         this.http = http;
-        this.accountsUrl = 'http://zipbank.herokuapp.com/API';
+        this.accountsUrl = 'https://zipbank-delightful-parrot-qa.cfapps.io/API';
     }
     findAll() {
         return this.http.get(this.accountsUrl + '/bills/all_bills');
@@ -2770,7 +2780,7 @@ let NotesService = class NotesService {
         this.http = http;
         this.authenticate = authenticate;
         this.user = new app_models_user__WEBPACK_IMPORTED_MODULE_4__["User"]();
-        this.url = "http://zipbank.herokuapp.com/user";
+        this.url = "https://zipbank-delightful-parrot-qa.cfapps.io/API";
     }
     getNotes() {
         return this.http.get(this.url + "/" + sessionStorage.getItem("userId") + "/notes");
@@ -2818,7 +2828,7 @@ __webpack_require__.r(__webpack_exports__);
 let RegisterService = class RegisterService {
     constructor(http) {
         this.http = http;
-        this.url = "http://zipbank.herokuapp.com";
+        this.url = "https://zipbank-delightful-parrot-qa.cfapps.io";
     }
     registerUser(newUser) {
         return this.http.post(this.url + "/register", newUser);
@@ -2856,7 +2866,7 @@ __webpack_require__.r(__webpack_exports__);
 let TransactionService = class TransactionService {
     constructor(http) {
         this.http = http;
-        this.transactionsUrl = 'http://zipbank.herokuapp.com/API';
+        this.transactionsUrl = 'https://zipbank-delightful-parrot-qa.cfapps.io/API';
     }
     getTransactions(accountId) {
         return this.http.get(this.transactionsUrl + '/accounts/' + accountId + '/transactions');
@@ -2911,7 +2921,7 @@ __webpack_require__.r(__webpack_exports__);
 let UserService = class UserService {
     constructor(http) {
         this.http = http;
-        this.url = "http://zipbank.herokuapp.com/";
+        this.url = "https://zipbank-delightful-parrot-qa.cfapps.io/";
     }
     getUser(username) {
         return this.http.get(this.url + "user/get/" + username);
@@ -3056,6 +3066,7 @@ let TransactionListByAccountComponent = class TransactionListByAccountComponent 
     }
     getTransactions() {
         const id = +this.route.snapshot.paramMap.get('accountId');
+        console.log(id);
         this.transactionService.getTransactions(id).subscribe(data => this.transactions = data);
     }
     onSelect(transaction) {
@@ -3610,7 +3621,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/brian/dev/FinalProj/FlipCoin-Front-End/FlipCoin/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/brian/dev/FinalProj/FlipCoin-Front-End/src/main.ts */"./src/main.ts");
 
 
 /***/ })

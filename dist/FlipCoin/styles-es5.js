@@ -353,7 +353,7 @@
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /Users/brian/dev/FinalProj/FlipCoin-Front-End/FlipCoin/src/styles.css */
+    /*! /Users/brian/dev/FinalProj/FlipCoin-Front-End/src/styles.css */
     "./src/styles.css");
     /***/
   }
