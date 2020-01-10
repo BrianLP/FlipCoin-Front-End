@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
 
-  private url: string = "http://zipbank.herokuapp.com/";
+  private url: string = "https://zipbank.herokuapp.com/";
 
   constructor(private http: HttpClient) { }
 

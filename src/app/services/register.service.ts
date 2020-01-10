@@ -7,7 +7,7 @@ import { Register } from '../models/register';
 })
 export class RegisterService {
 
-  url: string = "http://zipbank.herokuapp.com";
+  url: string = "https://zipbank.herokuapp.com";
 
   constructor(private http: HttpClient) { }
 
