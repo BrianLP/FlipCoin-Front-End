@@ -39,11 +39,9 @@ export class AccountService {
     return this.http.delete<Account[]>(this.accountsUrl + '/accounts/' + id);
   }
   public getAccountsByUserId(): Observable<Account[]> {
-    
     const id = sessionStorage.getItem('userId');
     return this.http.get<Account[]>(this.accountsUrl+'/user/'+id+'/accounts');
   }
-
   public accountDeposit(transaction: Transactions) {
     return this.http.put<Account>(this.accountsUrl + '/accounts/deposit/', transaction);
   }

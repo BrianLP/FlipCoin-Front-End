@@ -43,6 +43,7 @@ export class DepositFormComponent implements OnInit {
     this.transaction.accountNumber = this.depositForm.controls['accountId'].value;
     this.transaction.amount = this.depositForm.controls['amount'].value;
     this.accountService.accountDeposit(this.transaction).subscribe(data => this.gotoAccountsList());
+    console.log(this.transaction);
   }
   createFormGroup(){
     return new FormGroup({
