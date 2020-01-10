@@ -20,7 +20,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   authenticate(username, password) {
-    return this.http.post<any>('http://zipbank.herokuapp.com/authenticate', { username, password }).pipe(map(
+    return this.http.post<any>('https://zipbank.herokuapp.com/authenticate', { username, password }).pipe(map(
       userData => {
         sessionStorage.setItem('username', username);
         let tokenStr = 'Bearer ' + userData.jwt;

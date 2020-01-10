@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
 import { User } from 'app/models/user';
 import { UserService } from './user.service';
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,12 @@ export class NotesService {
 
   user: any = new User();
 
-  private url: string = "http://zipbank.herokuapp.com/user";
+  private url: string =  "https://zipbank.herokuapp.com/user";
 
   constructor(
     private http:HttpClient, 
     private authenticate: AuthenticationService
+    
     ) { }
 
   getNotes(): Observable<Notes[]>{

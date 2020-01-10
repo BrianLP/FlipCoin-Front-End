@@ -14,7 +14,7 @@ export class AccountService {
   private storedId: number;
  
   constructor(private http: HttpClient) {
-    this.accountsUrl = 'http://zipbank.herokuapp.com/API';
+    this.accountsUrl = 'https://zipbank.herokuapp.com/API';
   }
  
   public findAll(): Observable<Account[]> {
@@ -25,8 +25,8 @@ export class AccountService {
   return this.http.get<Account>(this.accountsUrl + '/accounts/' + accountNumber);
   }
  
-  public save(accounts: Account) {
-    return this.http.post<Account>(this.accountsUrl +'/accounts/dummy_created', accounts);
+  public save(account: Account) {
+    return this.http.post<Account>(this.accountsUrl +'/accounts/dummy_created', account);
 
   }
   public remove(id: Number) {
