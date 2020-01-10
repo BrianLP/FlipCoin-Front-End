@@ -14,7 +14,7 @@
     <div class="row">
         <div class="bg-light border-right, col-3" id="sidebar-wrapper">
             <h3>Accounts</h3>
-            <div class="list-group list-group-flush" *ngFor="let account of accounts">
+            <div class="list-group list-group-flush"  *ngFor="let account of accounts">
                 <a (click)="getTransactions(account.accountNumber)"
                     class="list-group-item list-group-item-action bg-light">
                     <ul>

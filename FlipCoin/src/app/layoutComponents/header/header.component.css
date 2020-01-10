@@ -4,18 +4,21 @@
     height: 72px;
     transition: all 0.5s;
 }
-.headerContainer{
-    display: inline-block;
-    width: 100%;
-}
-#logo{
-    display:flex;
-}
+
 
 .image{
+    width: 180px;
     height: 100px;
-    width: 100px;
-    display: block;
+    display: inline-block;
+    
+}
+h1{
+    font-family: "Helvetica", sans-serif;
+    height:100px;
+    vertical-align: bottom;
+}
+.container-head{
+    display: flex;
     
 }
 

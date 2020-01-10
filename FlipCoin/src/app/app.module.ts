@@ -39,6 +39,7 @@ import { TransferFormComponent } from './transfer-form/transfer-form.component';
 import { TransferOtherComponent } from './transfer-other/transfer-other.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { TransactionService } from './services/transaction-service.service';
+import { LogoComponent } from './layoutComponents/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { TransactionService } from './services/transaction-service.service';
     WithdrawFormComponent,
     TransferFormComponent,
     TransferOtherComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    LogoComponent
   ],
 
   imports: [

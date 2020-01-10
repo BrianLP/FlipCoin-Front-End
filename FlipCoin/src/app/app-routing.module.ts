@@ -21,9 +21,11 @@ import { MakeTransactionComponent } from './make-transaction/make-transaction.co
 import { BillListComponent } from './bill-list/bill-list.component'
 import { BillFormComponent } from './bill-form/bill-form.component'
 import { BillDetailsComponent } from './bill-details/bill-details.component'
+import { LogoComponent } from './layoutComponents/logo/logo.component';
 
 
 const routes: Routes = [
+  { path: '', component: LogoComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logged-in', component: LoggedInContainerComponent },
   { path: 'registration', component: RegisterComponent },
