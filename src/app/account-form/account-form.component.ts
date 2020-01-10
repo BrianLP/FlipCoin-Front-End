@@ -23,9 +23,12 @@ export class AccountFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.account.userId = sessionStorage.getItem('userId');
+    
+    this.account.userId =parseInt(sessionStorage.getItem('userId'));
+    //this.account.userId = sessionStorage.getItem('userId');
     this.accountService.save(this.account).subscribe(data => this.gotoAccountsList());
-
+    console.log(sessionStorage.getItem('userId'));
+    console.log(this.account);
   }
   gotoAccountsList() {
     this.router.navigateByUrl('accounts');

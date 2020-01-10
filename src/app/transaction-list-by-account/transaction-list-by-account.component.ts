@@ -29,7 +29,9 @@ export class TransactionListByAccountComponent implements OnInit {
   }
 
   getTransactions(): void {
+
     const id = +this.route.snapshot.paramMap.get('accountId');
+    console.log(id);
     this.transactionService.getTransactions(id).subscribe(data => this.transactions = data);
   }
 

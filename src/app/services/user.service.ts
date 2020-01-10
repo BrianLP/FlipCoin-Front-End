@@ -9,7 +9,9 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
 
-  private url: string = "https://zipbank.herokuapp.com/";
+  currentUser:User;
+
+  private url: string = "https://zipbank-delightful-parrot-qa.cfapps.io/";
 
   constructor(private http: HttpClient) { }
 

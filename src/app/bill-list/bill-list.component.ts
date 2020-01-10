@@ -34,7 +34,6 @@ export class BillListComponent implements OnInit {
 
     this.billService.findAll().subscribe(data => {
     this.bills = data;
-    this.billTotal();
     });
     this.userService.getUser(this.authenticate.getUser()).subscribe(e => this.user = e);
     

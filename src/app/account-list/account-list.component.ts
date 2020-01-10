@@ -3,7 +3,7 @@ import { Account } from '../account/account.component'
 import { AccountService } from '../services/account-service.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { identifierModuleUrl } from '@angular/compiler';
-import { User } from 'app/services/authentication.service';
+import { User, AuthenticationService } from 'app/services/authentication.service';
 
 
 @Component({
@@ -21,15 +21,15 @@ export class AccountListComponent implements OnInit {
   constructor(
     private accountService:AccountService,
     private route: ActivatedRoute, 
-    private router: Router 
+    private router: Router,
+    private authService:AuthenticationService
     ) { }
 
   ngOnInit() {
-    
-    //this.getUserAccounts();
-    this.accountService.findAll().subscribe(data => {this.accounts = data; 
-    });
-    console.log(this.accounts);
+   
+    this.getUserAccounts();
+    //this.accountService.findAll().subscribe(data => {this.accounts = data; 
+    //});
   }
   getUserAccounts()  {
     

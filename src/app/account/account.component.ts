@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class Account implements OnInit {
   accountNumber:number;
   accountName:string;
-  userId:string;
+  userId:number;
   balance:string;
   type:string;
   interestRate:string;
