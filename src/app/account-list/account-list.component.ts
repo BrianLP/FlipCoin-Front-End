@@ -26,14 +26,9 @@ export class AccountListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-   
-    this.getUserAccounts();
-    //this.accountService.findAll().subscribe(data => {this.accounts = data; 
-    //});
+   this.getUserAccounts();
   }
   getUserAccounts()  {
-    
-    //const id = +this.route.snapshot.paramMap.get('userId');
     this.accountService.getAccountsByUserId().subscribe(data => {this.accounts = data;
     });
   }

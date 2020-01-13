@@ -32,7 +32,7 @@ export class AccountService {
   }
 
   public save(account: Account) {
-    return this.http.post<Account>(this.accountsUrl + '/accounts/dummy_created', account);
+    return this.http.post<Account>(this.accountsUrl + '/accounts/account-created', account);
 
   }
   public remove(id: Number) {
